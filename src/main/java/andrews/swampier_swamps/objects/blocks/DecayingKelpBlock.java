@@ -1,0 +1,54 @@
+package andrews.swampier_swamps.objects.blocks;
+
+import andrews.swampier_swamps.block_entities.DecayingKelpBlockEntity;
+import andrews.swampier_swamps.registry.SSParticles;
+import com.mojang.serialization.MapCodec;
+import net.minecraft.core.BlockPos;
+import net.minecraft.tags.FluidTags;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.BaseEntityBlock;
+import net.minecraft.world.level.block.RenderShape;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockState;
+
+public class DecayingKelpBlock extends BaseEntityBlock
+{
+    public MapCodec<? extends DecayingKelpBlock> codec() {
+        return DecayingKelpBlock.simpleCodec(DecayingKelpBlock::new);
+    }
+
+    public DecayingKelpBlock(Properties properties)
+    {
+        super(properties);
+    }
+
+    @Override
+    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource rand)
+    {
+        if(level.getFluidState(pos.above()).is(FluidTags.WATER))
+            if (rand.nextInt(3) == 0)
+                for(int i = 0; i < 2; i++)
+                    level.addParticle(SSParticles.DECAY_BUBBLES, (double)pos.getX() + rand.nextDouble(), (double)pos.getY() + 1.1D, (double)pos.getZ() + rand.nextDouble(), 0.0D, 1.5D, 0.0D);
+    }
+
+    @Override
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state)
+    {
+        return new DecayingKelpBlockEntity(pos, state);
+    }
+
+    @Override
+    public RenderShape getRenderShape(BlockState state)
+    {
+        return RenderShape.MODEL;
+    }
+
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType)
+    {
+        return (level1, pos, state1, blockEntity) -> DecayingKelpBlockEntity.tick(level1, pos, state1, (DecayingKelpBlockEntity) blockEntity);
+    }
+}

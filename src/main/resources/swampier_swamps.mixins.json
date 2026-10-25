@@ -1,0 +1,29 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "andrews.swampier_swamps.mixins",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "AbstractTreeGrowerMixin",
+    "BlockBehaviourMixin",
+    "BlockMixin",
+    "BlocksMixin",
+    "BoneMealItemMixin",
+    "BottleItemMixin",
+    "CropBlockMixin",
+    "MobMixin",
+    "PotionBrewingMixin",
+    "ProjectileMixin",
+    "SecondaryPoiSensorMixin",
+    "WaterlilyBlockMixin",
+    "frog.FrogAttackablesSensorMixin",
+    "frog.FrogMixin",
+    "frog.ShootTongueMixin"
+  ],
+  "client": [
+    "frog.FrogRendererMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

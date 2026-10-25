@@ -1,0 +1,14 @@
+accessWidener v1 named
+# We make these methods public in order to call them from SwampVineBlock
+accessible method net/minecraft/world/level/block/VineBlock hasHorizontalConnection (Lnet/minecraft/world/level/block/state/BlockState;)Z # hasHorizontalConnection
+accessible method net/minecraft/world/level/block/VineBlock copyRandomFaces (Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/util/RandomSource;)Lnet/minecraft/world/level/block/state/BlockState; # copyRandomFaces
+# Need to register Trunk Placer
+accessible method net/minecraft/world/level/levelgen/feature/trunkplacers/TrunkPlacerType <init> (Lcom/mojang/serialization/MapCodec;)V # TrunkPlacerType
+# Need to register Tree Decorator
+accessible method net/minecraft/world/level/levelgen/feature/treedecorators/TreeDecoratorType <init> (Lcom/mojang/serialization/MapCodec;)V # TreeDecoratorType
+# We add Render Layers to the Frogs (Red Eyes if they are Waldo)
+accessible method net/minecraft/client/renderer/entity/LivingEntityRenderer addLayer (Lnet/minecraft/client/renderer/entity/layers/RenderLayer;)Z # addLayer
+# For Entity Spawning
+accessible method net/minecraft/world/entity/SpawnPlacements register (Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/entity/SpawnPlacementType;Lnet/minecraft/world/level/levelgen/Heightmap$Types;Lnet/minecraft/world/entity/SpawnPlacements$SpawnPredicate;)V
+# Used so we can turn the Decaying Kelp into Fertile Farmland
+accessible field net/minecraft/world/item/HoeItem TILLABLES Ljava/util/Map;

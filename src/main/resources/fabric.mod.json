@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "id": "swampier_swamps",
+  "version": "${version}",
+
+  "name": "Swampier Swamps (Unofficial 1.21.1 Port)",
+  "description": "Unofficial Fabric 1.21.1 port of Swampier Swamps by andrew0030. Adds swamp flora, fauna, structures, and gameplay features.",
+  "authors": ["andrew0030", "JustHari01 (unofficial port)"],
+  "contact": {
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/swampier-swamps",
+    "sources": "https://github.com/andrew0030/SwampierSwamps",
+    "issues": "https://github.com/andrew0030/SwampierSwamps/issues"
+  },
+
+  "license": "LGPL-3.0-only",
+  "icon": "logo.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": ["andrews.swampier_swamps.SwampierSwamps"],
+    "modmenu": [
+      "andrews.swampier_swamps.config.ModMenuConfig"
+    ],
+    "client": [
+      {
+        "value": "andrews.swampier_swamps.SwampierSwampsClient"
+      }
+    ]
+  },
+  "mixins": ["swampier_swamps.mixins.json"],
+
+  "accessWidener" : "swampier_swamps.accesswidener",
+
+  "depends": {
+    "fabricloader": ">=0.15.0",
+    "fabric": "*",
+    "minecraft": "~1.21.1",
+    "java": ">=21",
+    "cloth-config2": ">=15.0.140"
+  },
+  "suggests": {
+    "modmenu": ">=11.0.5"
+  }
+}
